@@ -18,6 +18,11 @@
     <!-- tailwind css -->
      <script src="./tailwind.js"></script>
 
+    
+    
+     <!-- alpine js -->
+     <script src="//unpkg.com/alpinejs" defer></script>
+
 
      <style>
          .bg-purple-500 {
@@ -28,7 +33,7 @@
           }
 
           .bg-dark-mb {
-            background-color: #5b04786d;
+            background-color: #6c03bc6d;
           }
           .bg-url {
          background-image: url("./compo imgs/A.jpg");
@@ -38,6 +43,12 @@
          min-height: 100vh;
          
      }
+     [x-cloak] {
+        display: none !important;
+      }
+     .bg-dark-mb-1 {
+            background-color: #17021ea0;
+          }
      </style>
 
     <!-- js slider -->
@@ -96,7 +107,10 @@
 </head>
 <body class="relative w-full overflow-hidden-x">
 
-<div class="boxnav">
+<div class="boxnav relative" x-data="{ open: false }">
+
+
+
 
 
 
@@ -188,7 +202,7 @@
 
          
 
-        <div popovertaget="popover" class="flex relative">
+        <div @click="open = !open" class="flex relative">
           <span class="rounded-xl  absolute h-5 w-5 bg-red-700 text-white flex items-center justify-center bottom-3 left-3">4</span>
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 text-white">
             <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 0 0-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 0 0-16.536-1.84M7.5 14.25 5.106 5.272M6 20.25a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Zm12.75 0a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Z" />
@@ -200,7 +214,249 @@
     
     
     <div class="flex"></div>
+
 </nav>
+
+
+
+<div
+ 
+x-show="open"
+x-cloak
+x-transition:enter="transition ease-out duration-300"
+x-transition:enter-start="opacity-0 translate-x-4 sm:translate-x-0 sm:scale-95"
+x-transition:enter-end="opacity-100 translate-x-0 sm:scale-100"
+x-transition:leave="transition ease-in duration-200"
+x-transition:leave-start="opacity-100 translate-x-0 sm:scale-100"
+x-transition:leave-end="opacity-0 translate-x-4 sm:translate-x-0 sm:scale-95"
+
+ class="fixed top-0 right-0   min-h-screen z-50 w-screen max-w-sm border bg-dark-mb-1  px-4 py-8 sm:px-6 lg:px-8"
+ aria-modal="true"
+ role="dialog"
+ tabindex="-1"
+>
+ <button @click="open = !open" class="absolute end-4 top-4 text-gray-600 transition hover:scale-110">
+   <span class="sr-only">Close cart</span>
+
+   <svg 
+     xmlns="http://www.w3.org/2000/svg"
+     fill="none"
+     viewBox="0 0 24 24"
+     stroke-width="1.5"
+     stroke="currentColor"
+     class="h-5 w-5 text-white"
+   >
+     <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+   </svg>
+ </button>
+
+ <div class="mt-4 space-y-6">
+   <ul class="space-y-4">
+     <li class="flex items-center gap-4">
+       <img
+         src="https://images.unsplash.com/photo-1618354691373-d851c5c3a990?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=830&q=80"
+         alt=""
+         class="size-16 rounded object-cover"
+       />
+
+       <div>
+         <h3 class="text-sm text-white ">Basic Tee 6-Pack</h3>
+
+         <dl class="mt-0.5 space-y-px text-[10px] text-white ">
+           <div>
+             <dt class="inline">Size:</dt>
+             <dd class="inline">XXS</dd>
+           </div>
+
+           <div>
+             <dt class="inline">Color:</dt>
+             <dd class="inline">White</dd>
+           </div>
+         </dl>
+       </div>
+
+       <div class="flex flex-1 items-center justify-end gap-2">
+         <form>
+           <label for="Line1Qty" class="sr-only"> Quantity </label>
+
+           <input
+             type="number"
+             min="1"
+             value="1"
+             id="Line1Qty"
+             class="h-8 w-12 rounded border-gray-200 bg-gray-50 p-0 text-center text-xs text-gray-600 [-moz-appearance:_textfield] focus:outline-none [&::-webkit-inner-spin-button]:m-0 [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:m-0 [&::-webkit-outer-spin-button]:appearance-none"
+           />
+         </form>
+
+         <button class="text-gray-600 transition hover:text-red-600">
+           <span class="sr-only">Remove item</span>
+
+           <svg
+             xmlns="http://www.w3.org/2000/svg"
+             fill="none"
+             viewBox="0 0 24 24"
+             stroke-width="1.5"
+             stroke="currentColor"
+             class="h-4 w-4 text-white"
+           >
+             <path
+               stroke-linecap="round"
+               stroke-linejoin="round"
+               d="M14.74 9l-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 01-2.244 2.077H8.084a2.25 2.25 0 01-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 00-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 013.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 00-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 00-7.5 0"
+             />
+           </svg>
+         </button>
+       </div>
+     </li>
+
+     <li class="flex items-center gap-4">
+       <img
+         src="https://images.unsplash.com/photo-1618354691373-d851c5c3a990?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=830&q=80"
+         alt=""
+         class="size-16 rounded object-cover"
+       />
+
+       <div>
+         <h3 class="text-sm  text-white ">Basic Tee 6-Pack</h3>
+
+         <dl class="mt-0.5 space-y-px text-[10px] text-white">
+           <div>
+             <dt class="inline">Size:</dt>
+             <dd class="inline">XXS</dd>
+           </div>
+
+           <div>
+             <dt class="inline">Color:</dt>
+             <dd class="inline">White</dd>
+           </div>
+         </dl>
+       </div>
+
+       <div class="flex flex-1 items-center justify-end gap-2">
+         <form>
+           <label for="Line2Qty" class="sr-only"> Quantity </label>
+
+           <input
+             type="number"
+             min="1"
+             value="1"
+             id="Line2Qty"
+             class="h-8 w-12 rounded border-gray-200 bg-gray-50 p-0 text-center text-xs text-gray-600 [-moz-appearance:_textfield] focus:outline-none [&::-webkit-inner-spin-button]:m-0 [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:m-0 [&::-webkit-outer-spin-button]:appearance-none"
+           />
+         </form>
+
+         <button class="text-gray-600 transition hover:text-red-600">
+           <span class="sr-only text-white">Remove item</span>
+
+           <svg
+             xmlns="http://www.w3.org/2000/svg"
+             fill="none"
+             viewBox="0 0 24 24"
+             stroke-width="1.5"
+             stroke="currentColor"
+             class="h-4 w-4 text-white"
+           >
+             <path
+               stroke-linecap="round"
+               stroke-linejoin="round"
+               d="M14.74 9l-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 01-2.244 2.077H8.084a2.25 2.25 0 01-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 00-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 013.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 00-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 00-7.5 0"
+             />
+           </svg>
+         </button>
+       </div>
+     </li>
+
+     <li class="flex items-center gap-4">
+       <img
+         src="https://images.unsplash.com/photo-1618354691373-d851c5c3a990?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=830&q=80"
+         alt=""
+         class="size-16 rounded object-cover"
+       />
+
+       <div>
+         <h3 class="text-sm text-white">Basic Tee 6-Pack</h3>
+
+         <dl class="mt-0.5 space-y-px text-[10px]  text-white">
+           <div>
+             <dt class="inline">Size:</dt>
+             <dd class="inline">XXS</dd>
+           </div>
+
+           <div>
+             <dt class="inline">Color:</dt>
+             <dd class="inline">White</dd>
+           </div>
+         </dl>
+       </div>
+
+       <div class="flex flex-1 items-center justify-end gap-2">
+         <form>
+           <label for="Line3Qty" class="sr-only text-white"> Quantity </label>
+
+           <input
+             type="number"
+             min="1"
+             value="1"
+             id="Line3Qty"
+             class="h-8 w-12 rounded border-gray-200 bg-gray-50 p-0 text-center text-xs text-gray-600 [-moz-appearance:_textfield] focus:outline-none [&::-webkit-inner-spin-button]:m-0 [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:m-0 [&::-webkit-outer-spin-button]:appearance-none"
+           />
+         </form>
+
+         <button class="text-gray-600 transition hover:text-red-600">
+           <span class="sr-only">Remove item</span>
+
+           <svg
+             xmlns="http://www.w3.org/2000/svg"
+             fill="none"
+             viewBox="0 0 24 24"
+             stroke-width="1.5"
+             stroke="currentColor"
+             class="h-4 w-4 text-white"
+           >
+             <path
+               stroke-linecap="round"
+               stroke-linejoin="round"
+               d="M14.74 9l-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 01-2.244 2.077H8.084a2.25 2.25 0 01-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 00-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 013.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 00-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 00-7.5 0"
+             />
+           </svg>
+         </button>
+       </div>
+     </li>
+   </ul>
+
+   <div class="space-y-4 text-center">
+     <a
+       href="./card.html"
+       class="block rounded border border-white px-5 py-3 text-sm text-white transition hover:ring-1 hover:ring-gray-400"
+     >
+       View my cart (2)
+     </a>
+
+     <a
+       href="#"
+       class="block rounded bg-purple-700 px-5 py-3 text-sm text-white  transition hover:bg-purple-600"
+     >
+       Checkout
+     </a>
+
+     <a
+       href="#"
+       class="inline-block text-sm text-white underline underline-offset-4 transition  "
+     >
+       Continue shopping
+     </a>
+   </div>
+ </div>
+</div>
+
+
+
+
+
+
+
+
+
 
 
 
@@ -304,6 +560,7 @@ class="flex h-14 justify-around  shadow-lg"
 
 
 
+
 </div>
 
 
@@ -317,22 +574,13 @@ class="flex h-14 justify-around  shadow-lg"
 
 
 
+ 
 
-
-
-
-
-
-
-
-
-
-    <header class=" p-4 flex flex-col justify-center items-center">
+    <header class="flex flex-col justify-center items-center">
 
       <br class="hidden lg:block">
-      <div class=" bg-url flex items-center rounded-lg  truncate justify-center w-full relative lg:max-h-screen">
-     
-
+      <div class=" bg-url flex items-center rounded-lg 
+         justify-center w-full   max-h-full lg:max-h-screen">
       </div>
 
 
@@ -1037,8 +1285,10 @@ class="flex h-14 justify-around  shadow-lg"
                 </div>
             </div>
             <div class="flex items-center justify-between rounded-md bg-purple-100 px-6 py-3 dark:bg-purple-500">
-                <span class="text-text-white dark:text-white">&copy; InMarket <script>document.write(new Date().getFullYear())</script> - Present</span>
-                 </div>
+                <span class="text-white dark:text-white">
+                  &copy; InMarket <script>document.write(new Date().getFullYear())</script> </span>
+                  <span  class="text-white dark:text-white" >Licence </span>
+           </div>
 
                 <p class="text-slate-500 dark:text-slate-500 text-center dark:text-white">
                     Created by <span class="text-slate-500 dark:text-slate-500"> EDEN PICTURE </span>
@@ -1049,30 +1299,4 @@ class="flex h-14 justify-around  shadow-lg"
 
 </body>
 </html>
-
-
-<!-- 
-
-
-            <div class="flex items-center space-x-4 justify-between w-full">
-                <a  class=" text-white text-sm" href="">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="34" height="34" viewBox="0 0 24 24"  style="fill: rgb(253, 253, 253);transform: ;msFilter:;"><path fill-rule="evenodd" clip-rule="evenodd" d="M18.403 5.633A8.919 8.919 0 0 0 12.053 3c-4.948 0-8.976 4.027-8.978 8.977 0 1.582.413 3.126 1.198 4.488L3 21.116l4.759-1.249a8.981 8.981 0 0 0 4.29 1.093h.004c4.947 0 8.975-4.027 8.977-8.977a8.926 8.926 0 0 0-2.627-6.35m-6.35 13.812h-.003a7.446 7.446 0 0 1-3.798-1.041l-.272-.162-2.824.741.753-2.753-.177-.282a7.448 7.448 0 0 1-1.141-3.971c.002-4.114 3.349-7.461 7.465-7.461a7.413 7.413 0 0 1 5.275 2.188 7.42 7.42 0 0 1 2.183 5.279c-.002 4.114-3.349 7.462-7.461 7.462m4.093-5.589c-.225-.113-1.327-.655-1.533-.73-.205-.075-.354-.112-.504.112s-.58.729-.711.879-.262.168-.486.056-.947-.349-1.804-1.113c-.667-.595-1.117-1.329-1.248-1.554s-.014-.346.099-.458c.101-.1.224-.262.336-.393.112-.131.149-.224.224-.374s.038-.281-.019-.393c-.056-.113-.505-1.217-.692-1.666-.181-.435-.366-.377-.504-.383a9.65 9.65 0 0 0-.429-.008.826.826 0 0 0-.599.28c-.206.225-.785.767-.785 1.871s.804 2.171.916 2.321c.112.15 1.582 2.415 3.832 3.387.536.231.954.369 1.279.473.537.171 1.026.146 1.413.089.431-.064 1.327-.542 1.514-1.066.187-.524.187-.973.131-1.067-.056-.094-.207-.151-.43-.263"></path></svg>
-                </a>
-
-                <a  class=" text-white text-sm" href="">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="34" height="34" viewBox="0 0 24 24"  style="fill: rgb(253, 253, 253);transform: ;msFilter:;"><path fill-rule="evenodd" clip-rule="evenodd" d="M18.403 5.633A8.919 8.919 0 0 0 12.053 3c-4.948 0-8.976 4.027-8.978 8.977 0 1.582.413 3.126 1.198 4.488L3 21.116l4.759-1.249a8.981 8.981 0 0 0 4.29 1.093h.004c4.947 0 8.975-4.027 8.977-8.977a8.926 8.926 0 0 0-2.627-6.35m-6.35 13.812h-.003a7.446 7.446 0 0 1-3.798-1.041l-.272-.162-2.824.741.753-2.753-.177-.282a7.448 7.448 0 0 1-1.141-3.971c.002-4.114 3.349-7.461 7.465-7.461a7.413 7.413 0 0 1 5.275 2.188 7.42 7.42 0 0 1 2.183 5.279c-.002 4.114-3.349 7.462-7.461 7.462m4.093-5.589c-.225-.113-1.327-.655-1.533-.73-.205-.075-.354-.112-.504.112s-.58.729-.711.879-.262.168-.486.056-.947-.349-1.804-1.113c-.667-.595-1.117-1.329-1.248-1.554s-.014-.346.099-.458c.101-.1.224-.262.336-.393.112-.131.149-.224.224-.374s.038-.281-.019-.393c-.056-.113-.505-1.217-.692-1.666-.181-.435-.366-.377-.504-.383a9.65 9.65 0 0 0-.429-.008.826.826 0 0 0-.599.28c-.206.225-.785.767-.785 1.871s.804 2.171.916 2.321c.112.15 1.582 2.415 3.832 3.387.536.231.954.369 1.279.473.537.171 1.026.146 1.413.089.431-.064 1.327-.542 1.514-1.066.187-.524.187-.973.131-1.067-.056-.094-.207-.151-.43-.263"></path></svg>
-                </a>
-
-                <a  class=" text-white text-sm" href="">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="34" height="34" viewBox="0 0 24 24"  style="fill: rgb(253, 253, 253);transform: ;msFilter:;"><path fill-rule="evenodd" clip-rule="evenodd" d="M18.403 5.633A8.919 8.919 0 0 0 12.053 3c-4.948 0-8.976 4.027-8.978 8.977 0 1.582.413 3.126 1.198 4.488L3 21.116l4.759-1.249a8.981 8.981 0 0 0 4.29 1.093h.004c4.947 0 8.975-4.027 8.977-8.977a8.926 8.926 0 0 0-2.627-6.35m-6.35 13.812h-.003a7.446 7.446 0 0 1-3.798-1.041l-.272-.162-2.824.741.753-2.753-.177-.282a7.448 7.448 0 0 1-1.141-3.971c.002-4.114 3.349-7.461 7.465-7.461a7.413 7.413 0 0 1 5.275 2.188 7.42 7.42 0 0 1 2.183 5.279c-.002 4.114-3.349 7.462-7.461 7.462m4.093-5.589c-.225-.113-1.327-.655-1.533-.73-.205-.075-.354-.112-.504.112s-.58.729-.711.879-.262.168-.486.056-.947-.349-1.804-1.113c-.667-.595-1.117-1.329-1.248-1.554s-.014-.346.099-.458c.101-.1.224-.262.336-.393.112-.131.149-.224.224-.374s.038-.281-.019-.393c-.056-.113-.505-1.217-.692-1.666-.181-.435-.366-.377-.504-.383a9.65 9.65 0 0 0-.429-.008.826.826 0 0 0-.599.28c-.206.225-.785.767-.785 1.871s.804 2.171.916 2.321c.112.15 1.582 2.415 3.832 3.387.536.231.954.369 1.279.473.537.171 1.026.146 1.413.089.431-.064 1.327-.542 1.514-1.066.187-.524.187-.973.131-1.067-.056-.094-.207-.151-.43-.263"></path></svg>
-                </a>
-
-                <a  class=" text-white text-sm" href="">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="34" height="34" viewBox="0 0 24 24"  style="fill: rgb(253, 253, 253);transform: ;msFilter:;"><path fill-rule="evenodd" clip-rule="evenodd" d="M18.403 5.633A8.919 8.919 0 0 0 12.053 3c-4.948 0-8.976 4.027-8.978 8.977 0 1.582.413 3.126 1.198 4.488L3 21.116l4.759-1.249a8.981 8.981 0 0 0 4.29 1.093h.004c4.947 0 8.975-4.027 8.977-8.977a8.926 8.926 0 0 0-2.627-6.35m-6.35 13.812h-.003a7.446 7.446 0 0 1-3.798-1.041l-.272-.162-2.824.741.753-2.753-.177-.282a7.448 7.448 0 0 1-1.141-3.971c.002-4.114 3.349-7.461 7.465-7.461a7.413 7.413 0 0 1 5.275 2.188 7.42 7.42 0 0 1 2.183 5.279c-.002 4.114-3.349 7.462-7.461 7.462m4.093-5.589c-.225-.113-1.327-.655-1.533-.73-.205-.075-.354-.112-.504.112s-.58.729-.711.879-.262.168-.486.056-.947-.349-1.804-1.113c-.667-.595-1.117-1.329-1.248-1.554s-.014-.346.099-.458c.101-.1.224-.262.336-.393.112-.131.149-.224.224-.374s.038-.281-.019-.393c-.056-.113-.505-1.217-.692-1.666-.181-.435-.366-.377-.504-.383a9.65 9.65 0 0 0-.429-.008.826.826 0 0 0-.599.28c-.206.225-.785.767-.785 1.871s.804 2.171.916 2.321c.112.15 1.582 2.415 3.832 3.387.536.231.954.369 1.279.473.537.171 1.026.146 1.413.089.431-.064 1.327-.542 1.514-1.066.187-.524.187-.973.131-1.067-.056-.094-.207-.151-.43-.263"></path></svg>
-                </a>
-            </div>
-
-
-
-
--->
+ 
