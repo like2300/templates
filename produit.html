@@ -1,0 +1,767 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>In Market</title>
+
+    <!-- favicon -->
+    <link rel="icon" href="./compo imgs/A1.png" type="image/x-icon">
+
+    <!-- favicon ios -->
+     <link rel="apple-touch-icon" href="./compo imgs/A1.png">
+
+    <!-- slider js -->
+    <link href="https://cdn.jsdelivr.net/npm/keen-slider@6.8.6/keen-slider.min.css" rel="stylesheet" />
+
+
+    <!-- tailwind css -->
+     <script src="./tailwind.js"></script>
+
+    
+    
+     <!-- alpine js -->
+     <script src="//unpkg.com/alpinejs" defer></script>
+
+     <link
+     rel="stylesheet"
+     href="https://cdn.jsdelivr.net/npm/keen-slider@6.8.5/keen-slider.min.css"
+   />
+
+   <script src="https://cdn.jsdelivr.net/npm/keen-slider@6.8.5/keen-slider.min.js"></script>
+    
+
+     <script>
+      var slider = new KeenSlider(
+        "#my-keen-slider",
+        {
+          loop: true,
+        },
+        [
+          (slider) => {
+            let timeout
+            let mouseOver = false
+            function clearNextTimeout() {
+              clearTimeout(timeout)
+            }
+            function nextTimeout() {
+              clearTimeout(timeout)
+              if (mouseOver) return
+              timeout = setTimeout(() => {
+                slider.next()
+              }, 2000)
+            }
+            slider.on("created", () => {
+              slider.container.addEventListener("mouseover", () => {
+                mouseOver = true
+                clearNextTimeout()
+              })
+              slider.container.addEventListener("mouseout", () => {
+                mouseOver = false
+                nextTimeout()
+              })
+              nextTimeout()
+            })
+            slider.on("dragStarted", clearNextTimeout)
+            slider.on("animationEnded", nextTimeout)
+            slider.on("updated", nextTimeout)
+          },
+        ]
+      )
+    </script>
+     <style>
+
+
+ 
+         .bg-purple-500 {
+            background-color: #53026e;
+          }
+          .text-purple-700{
+              color: #53026e;
+          }
+
+          .bg-dark-mb {
+            background-color: #6c03bc6d;
+          }
+          .bg-url {
+         background-image: url("./compo imgs/A.jpg");
+         background-repeat: no-repeat;
+         background-size: cover;
+         background-position: center; 
+     }
+     [x-cloak] {
+        display: none !important;
+      }
+     .bg-dark-mb-1 {
+            background-color: #17021ea0;
+          }
+     </style>
+
+    <!-- js slider -->
+
+    <script type="module">
+      import KeenSlider from 'https://cdn.jsdelivr.net/npm/keen-slider@6.8.6/+esm'
+    
+      const keenSlider = new KeenSlider(
+        '#keen-slider',
+        {
+          loop: true,
+          slides: {
+            origin: 'center',
+            perView: 1.25,
+            spacing: 16,
+          },
+          breakpoints: {
+            '(min-width: 1024px)': {
+              slides: {
+                origin: 'auto',
+                perView: 1.5,
+                spacing: 32,
+              },
+            },
+          },
+        },
+        []
+      )
+    
+      const keenSliderPrevious = document.getElementById('keen-slider-previous')
+      const keenSliderNext = document.getElementById('keen-slider-next')
+    
+      const keenSliderPreviousDesktop = document.getElementById('keen-slider-previous-desktop')
+      const keenSliderNextDesktop = document.getElementById('keen-slider-next-desktop')
+    
+      keenSliderPrevious.addEventListener('click', () => keenSlider.prev())
+      keenSliderNext.addEventListener('click', () => keenSlider.next())
+    
+      keenSliderPreviousDesktop.addEventListener('click', () => keenSlider.prev())
+      keenSliderNextDesktop.addEventListener('click', () => keenSlider.next())
+    
+      // Auto slide function
+      function autoSlide() {
+        keenSlider.next()
+      }
+    
+      // Set interval for auto slide
+      setInterval(autoSlide, 5000)
+    </script>
+    
+
+
+
+
+
+</head>
+<body class="relative w-full overflow-hidden-x">
+
+<div class="boxnav relative" x-data="{ open: false }">
+
+
+
+
+
+
+
+
+
+
+  <!-- Navbar -->
+
+  <nav class="flex lg:flex-row  flex-col justify-between items-center bg-white p-6">
+    <div class="flex"></div>
+    <div class="flex flex-wrap text-center justify-center items-center space-x-12">
+        <a href="" class="text-gray-900 flex items-center justify-center text-xl font-bold">
+            <img src="./compo imgs/A1.png" class="h-16" alt="">
+            In <span class="text-purple-700">Market</span>
+        </a>
+
+        <ul class="hidden lg:block  ">
+            <li class="inline-block mr-4">
+                <a href="" class="text-gray-700 hover:text-gray-900">Accueil</a>
+            </li>
+            <li class="inline-block mr-4">
+                <a href="" class="text-gray-700 hover:text-gray-900">Features</a>
+            </li>
+            <li class="inline-block mr-4">
+                <a href="" class="text-gray-700 hover:text-gray-900">Pricing</a>
+            </li>
+            <li class="inline-block mr-4">
+                <a href="#" class="text-gray-700 hover:text-gray-900">FAQs</a>
+            </li>
+            <li class="inline-block">
+                <a href="#" class="text-gray-700 hover:text-gray-900">About</a>
+            </li>
+        </ul>
+    </div>
+
+
+    <div class="lg:flex hidden ">
+        <a href="./connexion.html" class="text-gray-700 hover:text-gray-900">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z" />
+          </svg>
+        </a>
+        
+    </div>
+
+    <div class="flex"></div>
+
+  
+</nav>
+
+<!-- nav 1 end  -->
+
+
+
+
+<nav class="flex flex-wrap justify-between items-center bg-purple-500 p-6 w-full">
+    <div class="flex"></div> 
+    
+    <div class="flex items-center space-x-4">
+        <a href="" class="text-gray-900 lg:text-xl font-bold">
+            <div class="hidden lg:flex  items-center text-white">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6 ">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25H12" />
+                  </svg>
+                  <span class="text-lg hidden lg:block">All catergories</span>
+            </div>
+        </a>
+
+        <div class="flex flex-col lg:flex-row items-center bg-slate-100 text-purple-900 space-x-4 p-2 rounded-full">
+             <div class="flex border-r-2 hidden lg:flex items-center space-x-2 ">
+                   <span class="text-lg">All categories</span>
+                    <svg  xmlns="http://www.w3.org/2000/svg" fill="none"viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-2 lg:size-4 ">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
+                    </svg>  
+                    <span class="border-r-2 border-purple-900 "> </span>
+             </div>  
+             
+             <div class="flex">
+                <input class="bg-slate-100 outline-none  lg:w-96" type="text" placeholder="Search">
+           
+                <button class="px-2 lg:px-0">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" />
+                    </svg>     
+                </button>  
+             </div>
+        </div>
+
+         
+
+        <div @click="open = !open" class="flex relative">
+          <span class="rounded-xl  absolute h-5 w-5 bg-red-700 text-white flex items-center justify-center bottom-3 left-3">4</span>
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 text-white">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 0 0-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 0 0-16.536-1.84M7.5 14.25 5.106 5.272M6 20.25a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Zm12.75 0a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Z" />
+          </svg>
+        </div>
+        
+    </div>
+
+    
+    
+    <div class="flex"></div>
+
+</nav>
+
+
+
+<div
+ 
+x-show="open"
+x-cloak
+x-transition:enter="transition ease-out duration-300"
+x-transition:enter-start="opacity-0 translate-x-4 sm:translate-x-0 sm:scale-95"
+x-transition:enter-end="opacity-100 translate-x-0 sm:scale-100"
+x-transition:leave="transition ease-in duration-200"
+x-transition:leave-start="opacity-100 translate-x-0 sm:scale-100"
+x-transition:leave-end="opacity-0 translate-x-4 sm:translate-x-0 sm:scale-95"
+
+ class="fixed top-0 right-0   min-h-screen z-50 w-screen max-w-sm border bg-dark-mb-1  px-4 py-8 sm:px-6 lg:px-8"
+ aria-modal="true"
+ role="dialog"
+ tabindex="-1"
+>
+ <button @click="open = !open" class="absolute end-4 top-4 text-gray-600 transition hover:scale-110">
+   <span class="sr-only">Close cart</span>
+
+   <svg 
+     xmlns="http://www.w3.org/2000/svg"
+     fill="none"
+     viewBox="0 0 24 24"
+     stroke-width="1.5"
+     stroke="currentColor"
+     class="h-5 w-5 text-white"
+   >
+     <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+   </svg>
+ </button>
+
+ <div class="mt-4 space-y-6">
+   <ul class="space-y-4">
+     <li class="flex items-center gap-4">
+       <img
+         src="https://images.unsplash.com/photo-1618354691373-d851c5c3a990?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=830&q=80"
+         alt=""
+         class="size-16 rounded object-cover"
+       />
+
+       <div>
+         <h3 class="text-sm text-white ">Basic Tee 6-Pack</h3>
+
+         <dl class="mt-0.5 space-y-px text-[10px] text-white ">
+           <div>
+             <dt class="inline">Size:</dt>
+             <dd class="inline">XXS</dd>
+           </div>
+
+           <div>
+             <dt class="inline">Color:</dt>
+             <dd class="inline">White</dd>
+           </div>
+         </dl>
+       </div>
+
+       <div class="flex flex-1 items-center justify-end gap-2">
+         <form>
+           <label for="Line1Qty" class="sr-only"> Quantity </label>
+
+           <input
+             type="number"
+             min="1"
+             value="1"
+             id="Line1Qty"
+             class="h-8 w-12 rounded border-gray-200 bg-gray-50 p-0 text-center text-xs text-gray-600 [-moz-appearance:_textfield] focus:outline-none [&::-webkit-inner-spin-button]:m-0 [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:m-0 [&::-webkit-outer-spin-button]:appearance-none"
+           />
+         </form>
+
+         <button class="text-gray-600 transition hover:text-red-600">
+           <span class="sr-only">Remove item</span>
+
+           <svg
+             xmlns="http://www.w3.org/2000/svg"
+             fill="none"
+             viewBox="0 0 24 24"
+             stroke-width="1.5"
+             stroke="currentColor"
+             class="h-4 w-4 text-white"
+           >
+             <path
+               stroke-linecap="round"
+               stroke-linejoin="round"
+               d="M14.74 9l-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 01-2.244 2.077H8.084a2.25 2.25 0 01-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 00-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 013.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 00-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 00-7.5 0"
+             />
+           </svg>
+         </button>
+       </div>
+     </li>
+
+     <li class="flex items-center gap-4">
+       <img
+         src="https://images.unsplash.com/photo-1618354691373-d851c5c3a990?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=830&q=80"
+         alt=""
+         class="size-16 rounded object-cover"
+       />
+
+       <div>
+         <h3 class="text-sm  text-white ">Basic Tee 6-Pack</h3>
+
+         <dl class="mt-0.5 space-y-px text-[10px] text-white">
+           <div>
+             <dt class="inline">Size:</dt>
+             <dd class="inline">XXS</dd>
+           </div>
+
+           <div>
+             <dt class="inline">Color:</dt>
+             <dd class="inline">White</dd>
+           </div>
+         </dl>
+       </div>
+
+       <div class="flex flex-1 items-center justify-end gap-2">
+         <form>
+           <label for="Line2Qty" class="sr-only"> Quantity </label>
+
+           <input
+             type="number"
+             min="1"
+             value="1"
+             id="Line2Qty"
+             class="h-8 w-12 rounded border-gray-200 bg-gray-50 p-0 text-center text-xs text-gray-600 [-moz-appearance:_textfield] focus:outline-none [&::-webkit-inner-spin-button]:m-0 [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:m-0 [&::-webkit-outer-spin-button]:appearance-none"
+           />
+         </form>
+
+         <button class="text-gray-600 transition hover:text-red-600">
+           <span class="sr-only text-white">Remove item</span>
+
+           <svg
+             xmlns="http://www.w3.org/2000/svg"
+             fill="none"
+             viewBox="0 0 24 24"
+             stroke-width="1.5"
+             stroke="currentColor"
+             class="h-4 w-4 text-white"
+           >
+             <path
+               stroke-linecap="round"
+               stroke-linejoin="round"
+               d="M14.74 9l-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 01-2.244 2.077H8.084a2.25 2.25 0 01-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 00-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 013.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 00-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 00-7.5 0"
+             />
+           </svg>
+         </button>
+       </div>
+     </li>
+
+     <li class="flex items-center gap-4">
+       <img
+         src="https://images.unsplash.com/photo-1618354691373-d851c5c3a990?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=830&q=80"
+         alt=""
+         class="size-16 rounded object-cover"
+       />
+
+       <div>
+         <h3 class="text-sm text-white">Basic Tee 6-Pack</h3>
+
+         <dl class="mt-0.5 space-y-px text-[10px]  text-white">
+           <div>
+             <dt class="inline">Size:</dt>
+             <dd class="inline">XXS</dd>
+           </div>
+
+           <div>
+             <dt class="inline">Color:</dt>
+             <dd class="inline">White</dd>
+           </div>
+         </dl>
+       </div>
+
+       <div class="flex flex-1 items-center justify-end gap-2">
+         <form>
+           <label for="Line3Qty" class="sr-only text-white"> Quantity </label>
+
+           <input
+             type="number"
+             min="1"
+             value="1"
+             id="Line3Qty"
+             class="h-8 w-12 rounded border-gray-200 bg-gray-50 p-0 text-center text-xs text-gray-600 [-moz-appearance:_textfield] focus:outline-none [&::-webkit-inner-spin-button]:m-0 [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:m-0 [&::-webkit-outer-spin-button]:appearance-none"
+           />
+         </form>
+
+         <button class="text-gray-600 transition hover:text-red-600">
+           <span class="sr-only">Remove item</span>
+
+           <svg
+             xmlns="http://www.w3.org/2000/svg"
+             fill="none"
+             viewBox="0 0 24 24"
+             stroke-width="1.5"
+             stroke="currentColor"
+             class="h-4 w-4 text-white"
+           >
+             <path
+               stroke-linecap="round"
+               stroke-linejoin="round"
+               d="M14.74 9l-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 01-2.244 2.077H8.084a2.25 2.25 0 01-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 00-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 013.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 00-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 00-7.5 0"
+             />
+           </svg>
+         </button>
+       </div>
+     </li>
+   </ul>
+
+   <div class="space-y-4 text-center">
+     <a
+       href="./card.html"
+       class="block rounded border border-white px-5 py-3 text-sm text-white transition hover:ring-1 hover:ring-gray-400"
+     >
+       View my cart (2)
+     </a>
+
+     <a
+       href="#"
+       class="block rounded bg-purple-700 px-5 py-3 text-sm text-white  transition hover:bg-purple-600"
+     >
+       Checkout
+     </a>
+
+     <a
+       href="#"
+       class="inline-block text-sm text-white underline underline-offset-4 transition  "
+     >
+       Continue shopping
+     </a>
+   </div>
+ </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- mobile menu -->
+ <div class="lg:hidden">
+
+
+
+
+
+  <ul class="fixed bottom-0 to lg:block w-full  backdrop-blur-lg  bg-dark-mb    z-50   ">
+    <div
+class="flex h-14 justify-around  shadow-lg"
+>
+<a href="#" class="flex flex-col items-center justify-center text-white">
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    fill="none"
+    viewBox="0 0 24 24"
+    strokeWidth="{1.5}"
+    stroke="currentColor" 
+    class="h-6 w-6"
+  >
+    <path
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      d="M2.25 12l8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25"
+    />
+  </svg>
+  <div class="text-sm">Home</div>
+</a>
+<a href="#" class="flex flex-col items-center justify-center text-white">
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    fill="none"
+    viewBox="0 0 24 24"
+    strokeWidth="{1.5}"
+    stroke="currentColor"
+    class="h-6 w-6"
+  >
+    <path
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      d="M3.75 6A2.25 2.25 0 016 3.75h2.25A2.25 2.25 0 0110.5 6v2.25a2.25 2.25 0 01-2.25 2.25H6a2.25 2.25 0 01-2.25-2.25V6zM3.75 15.75A2.25 2.25 0 016 13.5h2.25a2.25 2.25 0 012.25 2.25V18a2.25 2.25 0 01-2.25 2.25H6A2.25 2.25 0 013.75 18v-2.25zM13.5 6a2.25 2.25 0 012.25-2.25H18A2.25 2.25 0 0120.25 6v2.25A2.25 2.25 0 0118 10.5h-2.25a2.25 2.25 0 01-2.25-2.25V6zM13.5 15.75a2.25 2.25 0 012.25-2.25H18a2.25 2.25 0 012.25 2.25V18A2.25 2.25 0 0118 20.25h-2.25A2.25 2.25 0 0113.5 18v-2.25z"
+    />
+  </svg>
+  <div class="text-sm">produits</div>
+</a>
+<a href="#" class="flex flex-col items-center justify-center text-white">
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    fill="none"
+    viewBox="0 0 24 24"
+    strokeWidth="{1.5}"
+    stroke="currentColor"
+    class="h-6 w-6"
+  >
+    <path
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z"
+    />
+  </svg>
+  <div class="text-sm">Categories</div>
+</a>
+<a href="./connexion.html" class="flex flex-col items-center justify-center text-white">
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    fill="none"
+    viewBox="0 0 24 24"
+    strokeWidth="{1.5}"
+    stroke="currentColor"
+    class="h-6 w-6"
+  >
+    <path
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z"
+    />
+  </svg>
+
+  <div class="text-sm">Account</div>
+</a>
+</div>
+</ul>
+
+
+
+
+
+
+
+ </div>
+
+
+
+
+
+</div>
+
+
+<div class="flex">
+  
+ 
+    <div id="my-keen-slider" class="keen-slider h-screen w-full">
+     <div class="min-h-full w-full  keen-slider__slide number-slide1">
+      <div class="  items-center min-h-full  justify-center">
+        <img  src="https://tse4.mm.bing.net/th?id=OIP.3lNGSRNsDQ1Tdv04syMHBAHaEa&pid=Api" alt="">
+      </div>
+     </div>
+
+     
+
+    </div>
+
+
+ 
+ 
+</div>
+
+<footer class=" dark:border-[--ui-dark-border-color]">
+    <div class="max-w-6xl mx-auto space-y-16 px-6 py-16 text-gray-600 2xl:px-0">
+        <div class="flex flex-wrap items-center justify-between gap-4 border-b pb-8 border-[--ui-light-border-color] dark:border-[--ui-dark-border-color]">
+            <a href="/" aria-label="tailus text-gray-900   text-md font-bold logo">
+                 
+                    In<span class="text-purple-900">Market</span>
+            
+            </a>
+            <div class="flex gap-3">
+                <a href="https://github.com/tailus-ui" target="blank" aria-label="github" class="size-8 flex *:m-auto rounded-[--btn-border-radius] text-gray-600 dark:text-gray-400 hover:text-primary-600 dark:hover:text-primary-500">
+                    <svg class="size-5" xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 16 16">
+                        <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"/>
+                    </svg>
+                </a>
+                <a href="https://twitter.com/tailus_ui" target="blank" aria-label="twitter" class="size-8 flex *:m-auto rounded-[--btn-border-radius] text-gray-600 dark:text-gray-400 hover:text-primary-600 dark:hover:text-primary-500">
+                    <svg class="size-5" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24">
+                        <path fill="currentColor" d="M18.205 2.25h3.308l-7.227 8.26l8.502 11.24H16.13l-5.214-6.817L4.95 21.75H1.64l7.73-8.835L1.215 2.25H8.04l4.713 6.231zm-1.161 17.52h1.833L7.045 4.126H5.078z"/>
+                    </svg>
+                </svg>
+                </a>
+                <a href="https://youtube.com/@tailus-ui" target="blank" aria-label="medium" class="size-8 flex *:m-auto rounded-[--btn-border-radius] text-gray-600 dark:text-gray-400 hover:text-primary-600 dark:hover:text-primary-500">
+                    <svg class="size-5" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><path fill="currentColor" d="m10 15l5.19-3L10 9zm11.56-7.83c.13.47.22 1.1.28 1.9c.07.8.1 1.49.1 2.09L22 12c0 2.19-.16 3.8-.44 4.83c-.25.9-.83 1.48-1.73 1.73c-.47.13-1.33.22-2.65.28c-1.3.07-2.49.1-3.59.1L12 19c-4.19 0-6.8-.16-7.83-.44c-.9-.25-1.48-.83-1.73-1.73c-.13-.47-.22-1.1-.28-1.9c-.07-.8-.1-1.49-.1-2.09L2 12c0-2.19.16-3.8.44-4.83c.25-.9.83-1.48 1.73-1.73c.47-.13 1.33-.22 2.65-.28c1.3-.07 2.49-.1 3.59-.1L12 5c4.19 0 6.8.16 7.83.44c.9.25 1.48.83 1.73 1.73"/></svg>
+                </a>
+            </div>
+        </div>
+        <div class="grid grid-cols-2 gap-6 sm:grid-cols-4">
+            <div>
+                <span class="font-medium text-gray-950 dark:text-white">Enterprise</span>
+                <ul class="mt-4 list-inside space-y-4">
+                    <li>
+                        <a href="#" class="text-sm text-gray-600 dark:text-gray-400 hover:text-primary-600 dark:hover:text-primary-500">About</a>
+                    </li>
+                    <li>
+                        <a href="#" class="text-sm text-gray-600 dark:text-gray-400 hover:text-primary-600 dark:hover:text-primary-500">Customers</a>
+                    </li>
+                    <li>
+                        <a href="#" class="text-sm text-gray-600 dark:text-gray-400 hover:text-primary-600 dark:hover:text-primary-500">Enterprise</a>
+                    </li>
+                    <li>
+                        <a href="#" class="text-sm text-gray-600 dark:text-gray-400 hover:text-primary-600 dark:hover:text-primary-500">Partners</a>
+                    </li>
+                    <li>
+                        <a href="#" class="text-sm text-gray-600 dark:text-gray-400 hover:text-primary-600 dark:hover:text-primary-500">Jobs</a>
+                    </li>
+                </ul>
+            </div>
+            <div>
+                <span class="text-sm font-medium text-gray-950 dark:text-white">Product</span>
+                <ul class="mt-4 list-inside space-y-4">
+                    <li>
+                        <a href="#" class="text-sm text-gray-600 dark:text-gray-400 hover:text-primary-600 dark:hover:text-primary-500">Security</a>
+                    </li>
+                    <li>
+                        <a href="#" class="text-sm text-gray-600 dark:text-gray-400 hover:text-primary-600 dark:hover:text-primary-500">Customization</a>
+                    </li>
+                    <li>
+                        <a href="#" class="text-sm text-gray-600 dark:text-gray-400 hover:text-primary-600 dark:hover:text-primary-500">Enterprise</a>
+                    </li>
+                    <li>
+                        <a href="#" class="text-sm text-gray-600 dark:text-gray-400 hover:text-primary-600 dark:hover:text-primary-500">Partners</a>
+                    </li>
+                </ul>
+            </div>
+            <div>
+                <span class="text-sm font-medium text-gray-950 dark:text-white">Docs</span>
+                <ul class="mt-4 list-inside space-y-4">
+                    <li>
+                        <a href="#" class="text-sm text-gray-600 dark:text-gray-400 hover:text-primary-600 dark:hover:text-primary-500">Introduction</a>
+                    </li>
+                    <li>
+                        <a href="#" class="text-sm text-gray-600 dark:text-gray-400 hover:text-primary-600 dark:hover:text-primary-500">Installation</a>
+                    </li>
+                    <li>
+                        <a href="#" class="text-sm text-gray-600 dark:text-gray-400 hover:text-primary-600 dark:hover:text-primary-500">Utils</a>
+                    </li>
+                    <li>
+                        <a href="#" class="text-sm text-gray-600 dark:text-gray-400 hover:text-primary-600 dark:hover:text-primary-500">Principles</a>
+                    </li>
+                    <li>
+                        <a href="#" class="text-sm text-gray-600 dark:text-gray-400 hover:text-primary-600 dark:hover:text-primary-500">Jargon</a>
+                    </li>
+                    <li>
+                        <a href="#" class="text-sm text-gray-600 dark:text-gray-400 hover:text-primary-600 dark:hover:text-primary-500">Plugin</a>
+                    </li>
+                    <li>
+                        <a href="#" class="text-sm text-gray-600 dark:text-gray-400 hover:text-primary-600 dark:hover:text-primary-500">Customizer</a>
+                    </li>
+                    <li>
+                        <a href="#" class="text-sm text-gray-600 dark:text-gray-400 hover:text-primary-600 dark:hover:text-primary-500">Boilerplates</a>
+                    </li>
+                </ul>
+            </div>
+            <div>
+                <span class="text-sm font-medium text-gray-950 dark:text-white">Community</span>
+                <ul class="mt-4 list-inside space-y-4">
+                    <li>
+                        <a href="#" class="text-sm text-gray-600 dark:text-gray-400 hover:text-primary-600 dark:hover:text-primary-500">GitHub</a>
+                    </li>
+                    <li>
+                        <a href="#" class="text-sm text-gray-600 dark:text-gray-400 hover:text-primary-600 dark:hover:text-primary-500">Discord</a>
+                    </li>
+                    <li>
+                        <a href="#" class="text-sm text-gray-600 dark:text-gray-400 hover:text-primary-600 dark:hover:text-primary-500">Slack</a>
+                    </li>
+                    <li>
+                        <a href="#" class="text-sm text-gray-600 dark:text-gray-400 hover:text-primary-600 dark:hover:text-primary-500">X / Twitter</a>
+                    </li>
+                </ul>
+
+                <form class="mt-12 max-w-xs w-full">
+                    <div class="space-y-2.5 has-[:disabled]:has-[:where(label,span)]:select-none has-[:disabled]:has-[:where(label,span)]:opacity-50 text-gray-950 dark:text-white has-[:disabled]:has-[:where(label,span)]:text-gray-600 dark:has-[:disabled]:has-[:where(label,span)]:text-gray-400">
+                        <label class="block font-medium text-sm" for="email">Subscribe to our newsletter</label>
+                        <input class="w-full  focus:outline rounded-md appearance-none transition duration-300 peer border shadow focus:outline-2 focus:-outline-offset-1 focus:border-2 border-purple-900 disabled:shadow-none bg-transparent outline-none shadow-gray-700/5 border-puple hover:border-[--field-light-border-hover-color] placeholder-gray-400 text-gray-700 dark:bg-[--field-dark-bg] dark:focus:bg-[--field-dark-focus-bg] dark:outline-primary-500 dark:shadow-gray-950/40 dark:border-[--field-dark-border-color] dark:hover:border-[--field-dark-border-hover-color] dark:placeholder-gray-600 dark:text-black disabled:bg-gray-100 disabled:border-gray-300 disabled:text-gray-400 disabled:placeholder-gray-300 dark:disabled:bg-gray-600/10 dark:disabled:border-gray-600/20 dark:disabled:text-gray-600 dark:disabled:placeholder-gray-700  h-9 px-3" placeholder="Your email" type="email" id="email" required name="email">
+                        <span class="hidden peer-disabled:text-gray-600 dark:peer-disabled:text-gray-400 text-gray-500 dark:text-gray-400 text-sm">Helper message</span>
+                    </div>
+                    <button type="submit" class="bg-purple-500 my-4 p-2 rounded-lg">
+                        <span class="text-white">Subscribe</span>
+                    </button>
+                </form>
+            </div>
+        </div>
+        <div class="flex items-center justify-between rounded-md bg-purple-100 px-6 py-3 dark:bg-purple-500">
+            <span class="text-white dark:text-white">
+              &copy; InMarket <script>document.write(new Date().getFullYear())</script> </span>
+              <span  class="text-white dark:text-white" >Licence </span>
+       </div>
+
+            <p class="text-slate-500 dark:text-slate-500 text-center dark:text-white">
+                Created by <span class="text-slate-500 dark:text-slate-500"> EDEN PICTURE </span>
+
+            </p>
+    </div>
+</footer>
+
+</body>
+</html>

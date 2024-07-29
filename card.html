@@ -13,6 +13,9 @@
     </style>
     <!-- tailwind css -->
      <script src="./tailwind.js"></script>
+
+     <!-- alpine js -->
+      <script src="//umpkg.com/alpinejs"></script>
 </head>
 <body>
 
@@ -20,7 +23,7 @@
 
 
 
-  <div class="boxnav">
+  <div class="boxnav relative">
 
 
 
@@ -80,28 +83,62 @@
   <nav class="flex flex-wrap justify-between items-center bg-purple-500 p-6">
       <div class="flex"></div> 
       
-      <div class="flex items-center space-x-4">
+      <div class=" flex items-center space-x-4">
           <a href="" class="text-gray-900 lg:text-xl font-bold">
               <div class="hidden lg:flex  items-center text-white">
-                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6 ">
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" 
+                  stroke="currentColor" class="size-6 ">
                       <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25H12" />
                     </svg>
                     <span class="text-lg hidden lg:block">All catergories</span>
               </div>
           </a>
   
-          <div class="flex flex-col lg:flex-row items-center bg-slate-100 text-purple-900 space-x-4 p-2 rounded-full">
-               <div class="flex border-r-2 hidden lg:flex items-center space-x-2 ">
-                     <span class="text-lg">All categories</span>
-                      <svg  xmlns="http://www.w3.org/2000/svg" fill="none"viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-2 lg:size-4 ">
+          <div x-data="{ open: false }"  class="flex flex-col lg:flex-row items-center
+           bg-slate-100 text-purple-900 space-x-4 p-2 rounded-full">
+               <div class="flex border-r-2 hidden lg:flex items-center space-x-2 " @click="open = !open"
+                    <span class="text-lg" >All categories</span>
+                      <svg  xmlns="http://www.w3.org/2000/svg" fill="none"viewBox="0 0 24 24" 
+                      stroke-width="1.5" stroke="currentColor" class="size-2 lg:size-4 ">
                           <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
                       </svg>  
                       <span class="border-r-2 border-purple-900 "> </span>
                </div>  
                
+
+               <div       
+               x-cloak
+               x-transition
+               x-show="Open"
+               x-on:click.away="Open = false"
+               x-on:keydown.escape.window="isOpen = false"  
+                class="bg-white sm:flex flex-col absolute top-full hidden   left-70">
+                <li class="flex items-center justify-between p-4 border-b border-gray-200 hover:bg-gray-100 cursor-pointer">
+                  <input type="checkbox" name="" id="">
+                  <label for="" class="text-purple-900 text-sm font-medium">All categories</label>
+                </li>
+
+                <li class="flex items-center justify-between p-4 border-b border-gray-200 hover:bg-gray-100 cursor-pointer">
+                  <input type="checkbox" name="" id="">
+                  <label for="" class="text-purple-900 text-sm font-medium">All categories</label>
+                </li>
+
+                <li class="flex items-center justify-between p-4 border-b border-gray-200 hover:bg-gray-100 cursor-pointer">
+                  <input type="checkbox" name="" id="">
+                  <label for="" class="text-purple-900 text-sm font-medium">All categories</label>
+                </li>
+
+                <li class="flex items-center justify-between p-4 border-b border-gray-200 hover:bg-gray-100 cursor-pointer">
+                  <input type="checkbox" name="" id="">
+                  <label for="" class="text-purple-900 text-sm font-medium">All categories</label>
+                </li>
+               </div>
+
+
+
                <div class="flex">
-                  <input class="bg-slate-100 outline-none  lg:w-full" type="text" placeholder="Search">
-             
+                <input class="transition duration-300 ease-in-out bg-slate-100 outline-none w-14 focus:w-32 sm:focus:w-96 overflow-hidden sm:w-96  " type="text" placeholder="Search">
+           
                   <button class="px-2 lg:px-0">
                       <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
                           <path stroke-linecap="round" stroke-linejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" />
@@ -492,6 +529,9 @@
 
 
     </main>
+
+
+    <br><br><br>
 
 
  
