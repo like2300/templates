@@ -168,10 +168,12 @@
         </div>
     </div>
   
-    <script>
+   <script>
       const loader = document.querySelector('.loader');
       window.addEventListener('load', function() {
         loader.classList.add('hidden');
+        loader.classList.add('tranlate-y-70'); 
+        loader.classList.add('transition-all');
       });
     </script>
     
@@ -267,7 +269,7 @@
              </div>  
              
              <div class="flex">
-                <input class="bg-slate-100 outline-none  lg:w-96" type="text" placeholder="Search">
+              <input class="transition-all duration-300 ease-in-out bg-slate-100 outline-none w-14 focus:w-32 sm:focus:w-96 overflow-hidden sm:w-96  " type="text" placeholder="Search">
            
                 <button class="px-2 lg:px-0">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
@@ -783,7 +785,7 @@ class="flex h-14 justify-around  shadow-lg"
         </div>
         <div class="flex items-center justify-between rounded-md bg-purple-100 px-6 py-3 dark:bg-purple-500">
             <span class="text-white dark:text-white">
-              &copy; InMarket <script>document.write(new Date().getFullYear())</script> </span>
+              &copy; InMarket <script>document.write(new Date().getFullYear())</> </span>
               <span  class="text-white dark:text-white" >Licence </span>
        </div>
 
