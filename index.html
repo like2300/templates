@@ -105,6 +105,37 @@
 </head>
 <body class="relative w-full overflow-hidden-x">
 
+
+
+
+
+  <div class="screen_loader">
+    <!-- laoder -->
+
+    <div class="loader absolute top-0 bg-white left-0 w-screen h-screen ">
+      <div class="loader-inner loader flex items-center justify-center h-screen">
+          <div class="loader-items flex items-center justify-center  h-screen loader">
+              <img class="loader animate-bounce h-24 sm:h-96" src="./compo imgs/logo-smal.png" alt="">
+          </div>
+        </div>
+    </div>
+  
+    <script>
+      const loader = document.querySelector('.loader');
+      window.addEventListener('load', function() {
+        loader.classList.add('hidden');
+      });
+    </script>
+    
+</div>
+
+
+
+
+
+
+
+
 <div class="boxnav relative" x-data="{ open: false }">
 
 
